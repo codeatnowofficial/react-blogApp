@@ -1,24 +1,28 @@
-import logo from './logo.svg';
 import './App.css';
-
+import Nav from './components/Nav';
+import { BrowserRouter, Route, Router, Routes } from 'react-router-dom';
+import About from './components/pages/About';
+import Home from './components/pages/Home';
+import Users from './components/pages/Users';
+import Contact from './components/pages/Contact';
+import Foot from './components/pages/Foot';
+import BlogPage from './components/pages/BlogPage';
+import UserProfile from './components/pages/UserProfile';
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+    <Nav></Nav>
+    <Routes>
+    <Route element={<Home/>} index/>
+    <Route element={<Home/>} path='/'/>
+    <Route element={<About/>} path='/about'/>
+    <Route element={<Users/>} path='/users'/>
+    <Route element={<Contact/>} path='/contact'/>
+    <Route element={<UserProfile/>} path='/users-profile'/>
+    <Route element={<BlogPage/>} path='/blog-page/:blog_title/:blog_description/:blog_user'/>
+    </Routes>
+    <Foot/>
+    </BrowserRouter>
   );
 }
 
