@@ -12,6 +12,7 @@ const UserProfile = () => {
         </div>
       </div>
     </div>
+    
   )
 }
 
