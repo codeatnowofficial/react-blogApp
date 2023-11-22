@@ -8,7 +8,7 @@ export default function Component() {
     <div className='relative overflow-hidden'>
 
       <Navbar fluid rounded className='fixed z-50 p-5 sm:p-3 top-0 left-0 right-0 rounded-md shadow-lg shadow-violet-100'>
-        <Navbar.Brand href="https://flowbite-react.com">
+        <Navbar.Brand href="/">
           <span className="self-center whitespace-nowrap font-semibold text-2xl"><span className='text-violet-700'>Blog</span>App</span>
         </Navbar.Brand>
         <div className="flex md:order-2">
