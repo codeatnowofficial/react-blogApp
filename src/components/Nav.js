@@ -7,7 +7,7 @@ export default function Component() {
   return (
     <div className='relative overflow-hidden'>
 
-      <Navbar fluid rounded className='fixed p-5 sm:p-3 top-0 left-0 right-0 rounded-md shadow-lg shadow-violet-100'>
+      <Navbar fluid rounded className='fixed z-50 p-5 sm:p-3 top-0 left-0 right-0 rounded-md shadow-lg shadow-violet-100'>
         <Navbar.Brand href="https://flowbite-react.com">
           <span className="self-center whitespace-nowrap font-semibold text-2xl"><span className='text-violet-700'>Blog</span>App</span>
         </Navbar.Brand>
@@ -23,7 +23,7 @@ export default function Component() {
               <span className="block text-sm">Bonnie Green</span>
               <span className="block truncate text-sm font-medium">name@flowbite.com</span>
             </Dropdown.Header>
-            <NavLink to='/users-profile'>
+            <NavLink to='/user-profile/user'>
               <Dropdown.Item>Profile</Dropdown.Item>
             </NavLink>
             <Dropdown.Divider />
