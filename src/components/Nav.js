@@ -1,7 +1,6 @@
 
 import { Avatar, Dropdown, Navbar } from 'flowbite-react';
-import { NavLink, Route, Routes } from 'react-router-dom';
-import About from './pages/About';
+import { NavLink} from 'react-router-dom';
 
 export default function Component() {
   return (

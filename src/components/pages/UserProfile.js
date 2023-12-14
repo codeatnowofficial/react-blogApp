@@ -1,4 +1,4 @@
-import { Label, TextInput } from 'flowbite-react'
+import { TextInput } from 'flowbite-react'
 import React, { useState } from 'react'
 import { HiMail } from 'react-icons/hi';
 import { RiLockPasswordFill } from "react-icons/ri";

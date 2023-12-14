@@ -1,7 +1,4 @@
-
-'use client';
-
-import { Button, Card, Checkbox, Label, TextInput } from 'flowbite-react';
+import { Card, Label, TextInput } from 'flowbite-react';
 import { NavLink } from 'react-router-dom';
 
 export default function Register() {
