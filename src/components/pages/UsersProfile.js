@@ -1,12 +1,22 @@
 import { TextInput } from 'flowbite-react'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { HiMail } from 'react-icons/hi';
 import { NavLink, useParams } from 'react-router-dom'
 import Nav from '../Nav'
+import axios from 'axios';
 
 const UsersProfile = () => {
   const params = useParams();
-  console.log(params)
+  const [data,setData] = useState([])
+  useEffect(()=>{
+    getUsers()
+  },[params])
+  const getUsers = () =>{
+    let url =`https://gold-crowded-hippo.cyclic.app/users/${params.username}`
+    axios.get(url).then(res => setData(...data,res.data)).catch(err =>console.log(err))
+  console.log(url)
+  }
+  console.log(data)
   return (
     <div>
       <Nav></Nav>
@@ -29,10 +39,10 @@ const UsersProfile = () => {
             </div>
             <div className='flex flex-col gap-3 sm:w-auto'>
               <div className="max-w-md pl-4 pr-4 text-[100px]">
-                <TextInput id="username3" className='text-[100px] sm:w-[86vw]' style={{ "font-size": "1.rem", "outline":"none" }} disabled value={params.username} addon="@" required />
+                <TextInput id="username3" className='text-[100px] sm:w-[86vw]' style={{ "font-size": "1.rem", "outline":"none" }} disabled value={data.username} addon="@" required />
               </div>
               <div className='max-w-md pl-4 pr-4'>
-                <TextInput id="email4" type="email" className='sm:w-[86vw]' icon={HiMail} style={{ "font-size": "1.rem" }} disabled value="name@flowbite.com" required />
+                <TextInput id="email4" type="email" className='sm:w-[86vw]' icon={HiMail} style={{ "font-size": "1.rem" }} disabled value={data.email} required />
               </div>
             </div>
           </div>

@@ -17,7 +17,7 @@ export default function BlogCard(props) {
             {props.heading}
           </h5>
           <p className="font-normal text-gray-700 dark:text-gray-400">
-            {props.description.slice(0, 10)}
+            {props.description}
           </p>
         </Card>
       </NavLink>

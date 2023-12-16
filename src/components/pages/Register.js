@@ -1,8 +1,34 @@
+import React, { useState } from 'react'
 import { Card, Label, TextInput } from 'flowbite-react';
 import { NavLink } from 'react-router-dom';
+import axios from 'axios';
 
 export default function Register() {
+  const [data, setdata] = useState({
+    username: "",
+    email: "",
+    password: ""
+  })
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setdata((data) => ({ ...data, [name]: value }));
+    // console.log(data)
+  }
+
+  // console.log(params)
+  const getData = async (e) => {
+    e.preventDefault()
+    console.log(JSON.stringify(data))
+    let url = "https://gold-crowded-hippo.cyclic.app/users/login"
+    await axios.post(url,data).then((res) => console.log(res.data)).catch((err) => console.log(error))
+    // console.log(login_auth_check)
+    // if(!login_auth_check) setMessage(true) 
+    // await fetch(url).then((res) => console.log(res)).catch((err) => console.log(error))
+    // await fetch(url, {method:'post',body:JSON.stringify(data)}).then((res) => console.log(res)).catch((error) => console.log(error))
+  }
   return (
+    
     <div className='bg-violet-50 h-[90vh]'>
       
     <div className='flex flex-col items-center justify-around h-[75vh] bg-violet-50'>
@@ -16,19 +42,19 @@ export default function Register() {
         <div className="mb-2 block">
           <Label htmlFor="username" value="Your Username" />
         </div>
-        <TextInput id="username" type="username" placeholder="Harikrishna" required />
+        <TextInput id="username" type="username" name='username' onChange={handleChange} placeholder="Harikrishna" required />
       </div>
           <div>
             <div className="mb-2 block">
               <Label htmlFor="email1" value="Your email" />
             </div>
-            <TextInput id="email1" type="email" placeholder="name@flowbite.com" required />
+            <TextInput id="email1" type="email" name='email' onChange={handleChange} placeholder="name@flowbite.com" required />
           </div>
           <div>
             <div className="mb-2 block">
               <Label htmlFor="password1" value="Your password" />
             </div>
-            <TextInput id="password1" type="password" required />
+            <TextInput id="password1" type="password" name='password' onChange={handleChange} required />
           </div>
           <div className="">
           already have an account&nbsp;
@@ -36,7 +62,7 @@ export default function Register() {
             Login
           </NavLink>  
           </div>
-          <button type="submit" className='bg-violet-600 hover:bg-violet-700 text-white py-3 rounded-md'>Submit</button>
+          <button type="submit" className='bg-violet-600 hover:bg-violet-700 text-white py-3 rounded-md' onClick={getData}>Submit</button>
         </form>
       </Card>
     </div>
