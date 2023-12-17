@@ -4,8 +4,10 @@ import { HiMail } from 'react-icons/hi';
 import { RiLockPasswordFill } from "react-icons/ri";
 import Nav from '../Nav'
 import { NavLink, useParams } from 'react-router-dom'
+import SkeletonLoading from '../SkeletonLoading';
 
 const UserProfile = () => {
+    const username = localStorage.getItem("username")
     const params = useParams();
     const [data, setdata] = useState({
         email:"",
@@ -25,7 +27,7 @@ const UserProfile = () => {
     return (
         <div>
         <Nav></Nav>
-
+       
         <div className='h-[90vh] overflow-hidden bg-violet-50'>
         <div className='bg-violet-50 mt-20 mb-10'>
                 <div className='pt-6 px-4 h-auto flex items-center justify-between'>
@@ -45,7 +47,7 @@ const UserProfile = () => {
                 </h2>
                         <div className='flex flex-col items-center justify-center h-full gap-3 w-full sm:w-[40vw] m-auto'>
                             <div className="w-full pl-4 pr-4 text-[100px]">
-                                <TextInput id="username3" className='text-[100px] sm:w-full w-full' disabled style={{ "fontSize": "1.rem", "outline": "none" }} onChange={handleChange} name='username' value={params.username} addon="@" required />
+                                <TextInput id="username3" className='text-[100px] sm:w-full w-full' disabled style={{ "fontSize": "1.rem", "outline": "none" }} onChange={handleChange} name='username' value={username} addon="@" required />
                                 </div>
                             <div className='w-full pl-4 pr-4'>
                             <TextInput id="email4" type="email" className='sm:w-full w-full' icon={HiMail} style={{ "fontSize": "1.rem" }} value={data.email} onChange={handleChange} name='email' required />

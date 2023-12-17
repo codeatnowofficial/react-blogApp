@@ -1,8 +1,8 @@
-
 import { Avatar, Dropdown, Navbar } from 'flowbite-react';
 import { NavLink} from 'react-router-dom';
 
 export default function Component() {
+  let username = localStorage.getItem("username")
   return (
     <div className='relative overflow-hidden'>
 
@@ -19,7 +19,7 @@ export default function Component() {
             }
           >
             <Dropdown.Header>
-              <span className="block text-sm">Bonnie Green</span>
+              <span className="block text-sm">{username}</span>
               <span className="block truncate text-sm font-medium">name@flowbite.com</span>
             </Dropdown.Header>
             <NavLink to='/user-profile/user'>

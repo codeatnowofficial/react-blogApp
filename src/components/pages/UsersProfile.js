@@ -8,6 +8,7 @@ import axios from 'axios';
 const UsersProfile = () => {
   const params = useParams();
   const [data,setData] = useState([])
+  let id
   useEffect(()=>{
     getUsers()
   },[params])
@@ -16,7 +17,7 @@ const UsersProfile = () => {
     axios.get(url).then(res => setData(...data,res.data)).catch(err =>console.log(err))
   console.log(url)
   }
-  console.log(data)
+  console.log(data._id)
   return (
     <div>
       <Nav></Nav>
