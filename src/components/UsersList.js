@@ -36,7 +36,7 @@ export default function UsersList() {
           loading ? <SkeletonLoading Users="usersLoading"/>:
           <div className="flex justify-center flex-wrap gap-3 p-2 mb-24">
           {
-            data?.map((array, key) => {
+            data.map((array, key) => {
               return (
                 <ListGroup key={key} className="w-full text-lg">
                   <NavLink to={`/users-profile/${array.username}`}>
