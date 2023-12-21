@@ -15,7 +15,7 @@ export default function UsersList() {
   const [loading, setLoading] = useState(false)
   useEffect(() => {
     getUsers()
-  })
+  },[])
   const getUsers = () => {
     setLoading(true)
     // let url = 'https://fair-fly-skirt.cyclic.app/users/'
