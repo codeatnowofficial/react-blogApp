@@ -7,20 +7,19 @@ import { useNavigate } from 'react-router-dom'
 
 const Home = () => {
   const [data,setData] = useState([])
-  const [user,setUser] = useState()
   const [loading,setLoading] = useState(false)
   const navigate = useNavigate()
-  let login_auth_check,UsernameArray
+  let UsernameArray
   let username = localStorage.getItem("username")
   let login = localStorage.getItem("login")
 
   useEffect(() =>{
-    if(login == false && !login){
+    if(login === false || !login){
       navigate("/login")
     }  
     checkUser()
     getPosts()
-  },[username])
+  })
 
   const checkUser = async () =>{
     // let url = "https://gold-crowded-hippo.cyclic.app/users/login/"
@@ -54,7 +53,7 @@ const Home = () => {
       
         data?.map((array,key) =>{
           return (
-            <BlogCard heading={array.title} description={array.description} user='user' />
+            <BlogCard heading={array.title}key={key} description={array.description} user='user' />
             )
         })
       

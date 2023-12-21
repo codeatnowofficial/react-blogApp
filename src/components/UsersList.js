@@ -15,7 +15,7 @@ export default function UsersList() {
   const [loading, setLoading] = useState(false)
   useEffect(() => {
     getUsers()
-  }, [])
+  })
   const getUsers = () => {
     setLoading(true)
     // let url = 'https://fair-fly-skirt.cyclic.app/users/'
@@ -36,9 +36,9 @@ export default function UsersList() {
           loading ? <SkeletonLoading Users="usersLoading"/>:
           <div className="flex justify-center flex-wrap gap-3 p-2 mb-24">
           {
-            data?.map((array, index) => {
+            data?.map((array, key) => {
               return (
-                <ListGroup className="w-full text-lg">
+                <ListGroup key={key} className="w-full text-lg">
                   <NavLink to={`/users-profile/${array.username}`}>
                     <ListGroup.Item>
                       <img src="https://cdn3d.iconscout.com/3d/free/thumb/user-3814118-3187499.png" className='img-fluid w-10' alt="user" />{array.username}
