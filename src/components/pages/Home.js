@@ -51,7 +51,7 @@ const Home = () => {
         
       {loading ? <SkeletonLoading/> :
       
-        data?.map((array,key) =>{
+        data.map((array,key) =>{
           return (
             <BlogCard heading={array.title}key={key} description={array.description} user='user' />
             )
