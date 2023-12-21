@@ -5,7 +5,7 @@ const SkeletonLoading = ({Users}) => {
     return (
         <div className='pt-4 sm:pl-32 sm:pr-32 p-4'>
         {
-            array?.map((arr,index) =>{
+            array.map((arr,index) =>{
                 return(
                     <div key={index} className="relative bg-white p-6 mb-8 overflow-hidden shadow hover:shadow-md rounded-lg">
                 <div className="animate-pulse flex space-x-4">
