@@ -19,7 +19,7 @@ const Home = () => {
     }  
     checkUser()
     getPosts()
-  })
+  },[])
 
   const checkUser = async () =>{
     // let url = "https://gold-crowded-hippo.cyclic.app/users/login/"
