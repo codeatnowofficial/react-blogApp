@@ -24,8 +24,8 @@ export default function Login() {
   const getData = async (e) => {
     e.preventDefault()
     console.log(data)
-    let url = "https://gold-crowded-hippo.cyclic.app/users/login/"
-    await axios.post(url, data).then((res) => login_auth_check = res.data).catch((err) => console.log(error))
+    // let url = "https://fair-fly-skirt.cyclic.app/users/login"
+    await axios.post(process.env.REACT_APP_URL +'/users/login', data).then((res) => login_auth_check = res.data).catch((err) => console.log(err))
     console.log(login_auth_check)
     if (!login_auth_check) setMessage(true)
     else {

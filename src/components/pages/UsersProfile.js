@@ -13,9 +13,9 @@ const UsersProfile = () => {
     getUsers()
   },[params])
   const getUsers = () =>{
-    let url =`https://gold-crowded-hippo.cyclic.app/users/${params.username}`
-    axios.get(url).then(res => setData(...data,res.data)).catch(err =>console.log(err))
-  console.log(url)
+    // let url =`https://gold-crowded-hippo.cyclic.app/users/${params.username}`
+    axios.get(`${process.env.REACT_APP_URL}/users/${params.username}`).then(res => setData(...data,res.data)).catch(err =>console.log(err))
+  // console.log(url)
   }
   console.log(data._id)
   return (

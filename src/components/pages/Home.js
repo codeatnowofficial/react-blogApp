@@ -12,30 +12,32 @@ const Home = () => {
   const navigate = useNavigate()
   let login_auth_check,UsernameArray
   let username = localStorage.getItem("username")
+  let login = localStorage.getItem("login")
 
   useEffect(() =>{
+    if(login == false && !login){
+      navigate("/login")
+    }  
     checkUser()
     getPosts()
   },[username])
 
   const checkUser = async () =>{
-    let url = "https://gold-crowded-hippo.cyclic.app/users/login/"
+    // let url = "https://gold-crowded-hippo.cyclic.app/users/login/"
     UsernameArray = {
       username:username
     }
     JSON.stringify(UsernameArray)
     console.log(UsernameArray)
-    await axios.post(url, UsernameArray).then((res) => login_auth_check = res.data).catch((err) => console.log(err))
-    console.log(login_auth_check)
-    if(!login_auth_check){
-      navigate("/login")
-    }   
+    await axios.post(process.env.REACT_APP_URL+'/users/login', UsernameArray).then((res) =>console.log(res)).catch((err) => console.log(err))
+    // console.log(login_auth_check)
+    
   }
 
   const getPosts = () =>{
-    let url = 'https://gold-crowded-hippo.cyclic.app/blogs'
+    // let url = 'https://gold-crowded-hippo.cyclic.app/blogs'
     setLoading(true)
-    axios.get(url)
+    axios.get(process.env.REACT_APP_URL+'/blogs')
     .then(res =>{
       setData(...data,res.data)
       setLoading(false)

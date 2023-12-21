@@ -7,6 +7,9 @@ import Nav from './Nav'
 import { useEffect, useState } from 'react';
 import axios from 'axios'
 import SkeletonLoading from './SkeletonLoading';
+// import env from './env'
+
+// require('dotenv').config()
 export default function UsersList() {
   const [data, setData] = useState([])
   const [loading, setLoading] = useState(false)
@@ -15,8 +18,9 @@ export default function UsersList() {
   }, [])
   const getUsers = () => {
     setLoading(true)
-    let url = 'https://gold-crowded-hippo.cyclic.app/users'
-    axios.get(url)
+    // let url = 'https://fair-fly-skirt.cyclic.app/users/'
+    console.log(process.env.REACT_APP_URL)
+    axios.get(process.env.REACT_APP_URL+ '/users')
     .then((res) => {
       setData(...data, res.data)
       setLoading(false)
@@ -35,7 +39,7 @@ export default function UsersList() {
             data?.map((array, index) => {
               return (
                 <ListGroup className="w-full text-lg">
-                  <NavLink to={`/users-profile/${array._id}`}>
+                  <NavLink to={`/users-profile/${array.username}`}>
                     <ListGroup.Item>
                       <img src="https://cdn3d.iconscout.com/3d/free/thumb/user-3814118-3187499.png" className='img-fluid w-10' alt="user" />{array.username}
                     </ListGroup.Item>

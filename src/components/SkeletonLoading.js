@@ -1,7 +1,7 @@
 import React from 'react'
 
 const SkeletonLoading = ({Users}) => {
-    let array = [1,2,3,4]
+    let array = [1,2]
     return (
         <div className='pt-4 sm:pl-32 sm:pr-32 p-4'>
         {

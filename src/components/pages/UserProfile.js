@@ -1,10 +1,11 @@
 import { TextInput } from 'flowbite-react'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { HiMail } from 'react-icons/hi';
 import { RiLockPasswordFill } from "react-icons/ri";
 import Nav from '../Nav'
 import { NavLink, useParams } from 'react-router-dom'
 import SkeletonLoading from '../SkeletonLoading';
+import axios from 'axios';
 
 const UserProfile = () => {
     const username = localStorage.getItem("username")
@@ -13,6 +14,14 @@ const UserProfile = () => {
         email:"",
         password:""
     })
+
+    useEffect(() =>{
+        displayData()
+    },[])
+
+    const displayData = () =>{
+        axios.get(`${process.env.REACT_APP_URL}/users/${username}`).then(result => setdata({email:result.data.email,password:result.data.password})).catch(err => console.log(err))
+    }
 
     const handleChange = (e) =>{
             const { name, value } = e.target;
