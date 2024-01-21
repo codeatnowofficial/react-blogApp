@@ -8,16 +8,30 @@ import axios from 'axios';
 const UsersProfile = () => {
   const params = useParams();
   const [data,setData] = useState([])
-  let id
+  const [userBlog,setUserBlog] = useState([])
+  console.log(params)
   useEffect(()=>{
-    getUsers()
+    func()
   },[params])
-  const getUsers = () =>{
+  
+  async function func(){
+    await getUsers()
+  }
+  const getUsers = async () =>{
+    const userdata = await axios.get(`${process.env.REACT_APP_URL}/users/${params.username}`)
+    setData(userdata.data)
+    getblog()
+    // console.log(data)
     // let url =`https://gold-crowded-hippo.cyclic.app/users/${params.username}`
-    axios.get(`${process.env.REACT_APP_URL}/users/${params.username}`).then(res => setData(...data,res.data)).catch(err =>console.log(err))
+    // .then(res => setData(...data,res.data)).catch(err =>console.log(err))
   // console.log(url)
   }
-  console.log(data._id)
+  const getblog = async () =>{
+    const userblog = await axios.get(`${process.env.REACT_APP_URL}/blogs/ub/${params.username}`)
+    console.log(userblog)
+    setUserBlog(userblog.data)
+  }
+  
   return (
     <div>
       <Nav></Nav>
@@ -52,39 +66,20 @@ const UsersProfile = () => {
               <h2 className='text-xl pb-2 text-white text-center sm:text-left'>Blogs</h2>
               <hr />
               <div className='py-2'>
-
-                <div className='pb-4'>
-                  <div>
-                    <h2 className='text-lg font-bold'>Heading of the blog</h2>
-                  </div>
-                  <div>
-                    <p>loremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremlorem</p>
-                  </div>
-                </div>
-                <div className='pb-4'>
-                  <div>
-                    <h2>Heading of the blog</h2>
-                  </div>
-                  <div>
-                    <p>loremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremlorem</p>
-                  </div>
-                </div>
-                <div className='pb-4'>
-                  <div>
-                    <h2>Heading of the blog</h2>
-                  </div>
-                  <div>
-                    <p>loremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremlorem</p>
-                  </div>
-                </div>
-                <div className='pb-4'>
-                  <div>
-                    <h2>Heading of the blog</h2>
-                  </div>
-                  <div>
-                    <p>loremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremlorem</p>
-                  </div>
-                </div>
+              {
+                userBlog?.map((ub) =>{
+                  return(
+                    <div className='pb-4'>
+                      <div>
+                        <h2 className='text-lg font-bold'>{ub.title}</h2>
+                      </div>
+                      <div>
+                        <p>{ub.description}</p>
+                      </div>
+                    </div>
+                  )
+                })
+              }
               </div>
 
             </div>
