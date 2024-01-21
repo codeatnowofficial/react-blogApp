@@ -10,14 +10,12 @@ import UsersProfile from './components/pages/UsersProfile';
 import UserProfile from './components/pages/UserProfile';
 import Login from './components/pages/Login';
 import Register from './components/pages/Register';
-import AddBlogPage from './components/pages/AddBlogPage';
 function App() {
   return (
     <BrowserRouter>
     <Routes>
     <Route element={<Home/>} index/>
     <Route element={<Home/>} path='/'/>
-    <Route element={<AddBlogPage/>} path='/addblog'/>
     <Route element={<About/>} path='/about'/>
     <Route element={<Users/>} path='/users'/>
     <Route element={<Contact/>} path='/contact'/>

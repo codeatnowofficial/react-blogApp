@@ -1,13 +1,8 @@
 import { Avatar, Dropdown, Navbar } from 'flowbite-react';
-import { NavLink, useNavigate} from 'react-router-dom';
+import { NavLink} from 'react-router-dom';
 
 export default function Component() {
   let username = localStorage.getItem("username")
-  const navigate = useNavigate()
-  const signout = () =>{
-    localStorage.clear()
-    navigate('/')
-  }
   return (
     <div className='relative overflow-hidden'>
 
@@ -31,7 +26,7 @@ export default function Component() {
               <Dropdown.Item>Profile</Dropdown.Item>
             </NavLink>
             <Dropdown.Divider />
-            <Dropdown.Item onClick={signout}>Sign out</Dropdown.Item>
+            <Dropdown.Item>Sign out</Dropdown.Item>
           </Dropdown>
           <Navbar.Toggle />
         </div>
@@ -40,7 +35,6 @@ export default function Component() {
            <NavLink to='/about' className="text-lg hover:text-violet-500 p-2 hover:bg-violet-100 rounded-md sm:hover:bg-white">About</NavLink>
           <NavLink to='/users' className="text-lg hover:text-violet-500 p-2 hover:bg-violet-100 rounded-md sm:hover:bg-white">Users</NavLink>
           <NavLink to='/contact' className="text-lg hover:text-violet-500 p-2 hover:bg-violet-100 rounded-md sm:hover:bg-white">Contact</NavLink>
-          <NavLink to='/addblog' className="text-lg hover:text-violet-500 p-2 hover:bg-violet-100 rounded-md sm:hover:bg-white">Add Blog</NavLink>
         </Navbar.Collapse>
       </Navbar>
     </div>

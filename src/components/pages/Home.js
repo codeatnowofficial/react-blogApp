@@ -19,7 +19,7 @@ const Home = () => {
     }  
     checkUser()
     getPosts()
-  },[])
+  })
 
   const checkUser = async () =>{
     // let url = "https://gold-crowded-hippo.cyclic.app/users/login/"
@@ -39,7 +39,6 @@ const Home = () => {
     axios.get(process.env.REACT_APP_URL+'/blogs')
     .then(res =>{
       setData(...data,res.data)
-      console.log(data)
       setLoading(false)
     }) 
     .catch(err => console.log(err))
