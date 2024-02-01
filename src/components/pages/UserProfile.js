@@ -16,7 +16,7 @@ const UserProfile = () => {
 
     useEffect(() => {
         displayData()
-    })
+    },[])
 
     const displayData = () => {
         axios.get(`${process.env.REACT_APP_URL}/users/${username}`).then(result => setdata({ email: result.data.email, password: result.data.password })).catch(err => console.log(err))
