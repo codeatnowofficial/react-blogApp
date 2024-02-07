@@ -98,7 +98,7 @@ const AdminHome = () => {
           className="bg-orange-200 py-2 px-8 hover:ring-1 hover:ring-orange-600 transition-all ease-linear rounded-md flex-col items-center justify-center gap-4"
         >
           <p className="flex items-center justify-center gap-4">
-            <span class="material-symbols-outlined text-orange-500 text-3xl">
+            <span className="material-symbols-outlined text-orange-500 text-3xl">
               group
             </span>
             <span className="font-bold text-orange-500">Users</span>
@@ -115,7 +115,7 @@ const AdminHome = () => {
           className="bg-indigo-200 py-2 px-8 hover:ring-1 hover:ring-indigo-600 transition-all ease-linear rounded-md flex-col items-center justify-center gap-4"
         >
           <p className="flex items-center justify-center gap-4">
-            <span class="material-symbols-outlined text-3xl text-indigo-500">
+            <span className="material-symbols-outlined text-3xl text-indigo-500">
               shield_person
             </span>
             <span className="font-bold text-indigo-500">Admins</span>
@@ -132,7 +132,7 @@ const AdminHome = () => {
           className="bg-green-200 py-2 px-8 hover:ring-1 hover:ring-green-600 transition-all ease-linear rounded-md flex-col items-center justify-center gap-4"
         >
           <p className="flex items-center justify-center gap-4">
-            <span class="material-symbols-outlined text-green-500 text-3xl">
+            <span className="material-symbols-outlined text-green-500 text-3xl">
               rss_feed
             </span>
             <span className="font-bold text-green-500">Blogs</span>
@@ -147,7 +147,7 @@ const AdminHome = () => {
         {listCheck?.admins && <List listData="admins" />}
         {listCheck?.users && <List listData="users" />}
         {!listCheck?.blogs && !listCheck?.admins && !listCheck?.users && (
-          <List listData="nochecked" />
+          <List listData="none" />
         )}
       </div>
     </div>
