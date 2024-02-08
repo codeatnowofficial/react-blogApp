@@ -68,8 +68,8 @@ const AdminHome = () => {
   };
 
   return (
-    <div className="pt-4 overflow-hidden removeScroll">
-      <div className="flex items-center overflow-hidden justify-center removeScroll gap-4">
+    <div className="pt-4 overflow-hidden bg-slate-50 removeScroll">
+      <div className="flex items-center overflow-hidden justify-center gap-4">
         <button
           type="button"
           className="border-b-2 border-red-300 p-2 text-red-600 font-semibold transition-all ease rounded-sm hover:border-b-0 focus:ring-1 focus:ring-red-400"
@@ -142,12 +142,12 @@ const AdminHome = () => {
           </p>
         </button>
       </div>
-      <div className="container overflow-y-scroll removeScroll h-[550px] p-4 my-2">
+      <div className="container overflow-y-scroll removeScroll bg-slate-50 h-[550px] p-4 my-2">
         {listCheck?.blogs && <List listData="blogs" />}
         {listCheck?.admins && <List listData="admins" />}
         {listCheck?.users && <List listData="users" />}
         {!listCheck?.blogs && !listCheck?.admins && !listCheck?.users && (
-          <List listData="none" />
+          <List listData="users" />
         )}
       </div>
     </div>
