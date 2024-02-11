@@ -14,6 +14,7 @@ const AdminHome = () => {
     users: false,
     admins: false,
   });
+
   useEffect(() => {
     cu();
   }, []);
@@ -147,7 +148,7 @@ const AdminHome = () => {
         {listCheck?.admins && <List listData="admins" />}
         {listCheck?.users && <List listData="users" />}
         {!listCheck?.blogs && !listCheck?.admins && !listCheck?.users && (
-          <List listData="users" />
+          <List listData="none" />
         )}
       </div>
     </div>
