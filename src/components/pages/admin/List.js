@@ -1,9 +1,34 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import {
+  Button, Dialog,
+  Card,
+  CardHeader,
+  CardBody,
+  CardFooter,
+  Typography,
+  Input,
+  Checkbox,
+} from "@material-tailwind/react";
+import UsersDialog from "./UsersDialog";
 
 const List = (props) => {
   const { listData } = props;
+  const [openUpdate, setOpenUpdate] = useState(false)
+  const [openDelete, setOpenDelete] = useState(false)
   const [individualData, setIndividualData] = useState([]);
+  const [updateId, setUpdateId] = useState('')
+  const [deleteId, setDeleteId] = useState('')
+
+  const handleOpenUpdate = async (id) => {
+    console.log(id)
+    setId(id)
+  }
+
+  function setId(id) {
+    setUpdateId(id)
+    setOpenUpdate((cur) => !cur);
+  }
 
   const getUsers = async () => {
     const users = await axios.get(process.env.REACT_APP_URL + "/users");
@@ -32,7 +57,6 @@ const List = (props) => {
       };
     });
   };
-  console.log(individualData);
   useEffect(() => {
     if (listData == "users") {
       getUsers();
@@ -47,15 +71,32 @@ const List = (props) => {
 
   const handleDelete = async (username) => {
     console.log(username);
-    const deleteCheck = await axios.delete(
-      `${process.env.REACT_APP_URL}/delete-admin/${username}`
-    );
-    console.log(deleteCheck);
+    const dltChk = await axios.delete(
+      process.env.REACT_APP_URL + "/admin/da/" + username,
+    )
+    if (dltChk.data.status === "success") {
+      getAdmins()
+    }
   };
-
-  console.log(individualData?.blogsData);
+  const handleDeleteBlogs = async (_id) => {
+    console.log(_id)
+    const dltBlg = await axios.delete(
+      process.env.REACT_APP_URL + '/blogs/' + _id
+    )
+    dltBlg && await getBlogs()
+  }
+  const handleDeleteUser = async (username) => {
+    setDeleteId(username)
+    setOpenDelete((cur) => !cur)
+  }
   return (
     <div>
+      {
+        openUpdate ? <UsersDialog updateId={updateId ? updateId : null} deleteId='' /> : ''
+      }
+      {
+        openDelete ? <UsersDialog deleteId={deleteId ? deleteId : ''} updateId='' /> : ''
+      }
       {/* testing table */}
       {/* testing table over */}
       {listData == "blogs" && (
@@ -144,7 +185,7 @@ const List = (props) => {
                                         <span class="material-symbols-outlined">
                                           delete
                                         </span>
-                                        <span>Delete</span>
+                                        <span onClick={(e) => handleDeleteBlogs(user._id)} >Delete</span>
                                       </button>
                                     </span>
                                   </td>
@@ -262,22 +303,12 @@ const List = (props) => {
                                   </td>
                                   <td class="p-3 pr-7 text-end">
                                     <span class="text-center align-baseline inline-flex px-4 py-3 items-center font-semibold text-[.95rem] leading-none text-primary bg-primary-light rounded-lg">
-                                      <button className="bg-red-200 flex items-center justify-center gap-1 ring-2 ring-red-500 text-red-800 font-bold px-7 py-2 outline-none tracking-wide">
-                                        <span class="material-symbols-outlined">
-                                          delete
-                                        </span>
-                                        <span>Delete</span>
-                                      </button>
+                                      <Button className="bg-red-200 flex items-center justify-center gap-1 ring-2 ring-red-500 text-red-800 font-bold px-7 py-2 outline-none tracking-wide" onClick={(e) => handleDeleteUser(user.username)}>Delete</Button>
                                     </span>
                                   </td>
                                   <td class="p-3 text-end">
                                     <span class="font-semibold text-light-inverse text-md/normal">
-                                      <button className="bg-emerald-200 flex items-center justify-center gap-1 ring-2 ring-emerald-500 text-emerald-800 font-bold px-7 py-2 outline-none tracking-wide">
-                                        <span class="material-symbols-outlined">
-                                          update
-                                        </span>
-                                        <span>Update</span>
-                                      </button>
+                                      <Button onClick={() => handleOpenUpdate(user._id)} className="bg-blue-700 text-white flex items-center justify-center gap-1 ring-2 font-bold px-7 py-2 outline-none tracking-wide">Update</Button>
                                     </span>
                                   </td>
                                 </tr>

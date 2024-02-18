@@ -11,7 +11,7 @@ const AdminHome = () => {
   const [detailsStartup, setDetailsStartup] = useState({});
   const [listCheck, setListCheck] = useState({
     blogs: false,
-    users: false,
+    users: true,
     admins: false,
   });
 
