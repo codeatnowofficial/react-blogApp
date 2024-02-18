@@ -21,7 +21,7 @@ export default function Register() {
   const getData = async (e) => {
     e.preventDefault()
     // let url = "https://fair-fly-skirt.cyclic.app/users/"
-    await axios.post(process.env.REACT_APP_URL + '/users',data).then((res) => navigate('/login')).catch((err) => console.log(err))
+    await axios.post(process.env.REACT_APP_URL + '/users', data).then((res) => navigate('/login')).catch((err) => console.log(err))
 
     // console.log(login_auth_check)
     // if(!login_auth_check) setMessage(true) 
